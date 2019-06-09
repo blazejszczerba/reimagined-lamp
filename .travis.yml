@@ -7,3 +7,17 @@ before_install:
 
 script: 
   - docker run blazejszczerba/reimagined-lamp npm run test -- --coverage
+
+depoly:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "reimaged-lamp"
+  env: "ReimagedLamp-env"
+  bucket_name: "elasticbeanstalk-us-west-2-687375717361" 
+  bucket_path: "reimaged-lamp"
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: $AWS_SECRET_ACCESS_KEY 
+
