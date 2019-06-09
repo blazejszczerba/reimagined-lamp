@@ -6,8 +6,7 @@ before_install:
   - docker build -t blazejszczerba/reimagined-lamp -f Dockerfile.dev .
 
 script: 
-  - docker run blazejszczerba/reimagined-lamp npm run test -- --coverage
-
+  - docker run -e CI=true blazejszczerba/reimagined-lamp npm test
 depoly:
   provider: elasticbeanstalk
   region: "us-west-2"
